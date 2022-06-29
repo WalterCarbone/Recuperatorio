@@ -6,10 +6,10 @@
      <input type="text" v-model="texto" @input="actualizar()"> <br>
     <hr>
     <p>{{ todoMayuscula }}  (TODO MAYUSCULA) </p>
-    <p>{{ todoMinuscula }} , (TODO MINUSCULA)</p>
-    <p>{{ codificado }} , (CODIFICADO)</p>
-    <p>{{ mayusculaMinuscula }} , (MAYUSCULA-MINUSCULA)</p>
-    <p>{{ minusculaMayuscula }} , (MINUSCULA-MAYUSCULA)</p>
+    <p>{{ todoMinuscula }}  (TODO MINUSCULA)</p>
+    <p>{{ codificado }}  (CODIFICADO)</p>
+    <p>{{ mayusculaMinuscula }}  (MAYUSCULA-MINUSCULA)</p>
+    <p>{{ minusculaMayuscula }}  (MINUSCULA-MAYUSCULA)</p>
     <p>cantidad: {{contar}} </p>
 
     <hr>
@@ -79,24 +79,23 @@
       },
 
       codificar(cadena){
-        let resultado=''
+        let convertida=''
         for(let i=0;i <cadena.length;i++){
           if(cadena[i]=='a'){
-            resultado+='u'
-          }
-         else if(cadena[i]=='e'){
-          resultado+='o'
+            convertida+='u'
+          }else if(cadena[i]=='e'){
+          convertida+='o'
          }else if(cadena[i]=='o'){
-          resultado+='e'
+          convertida+='e'
          }else if(cadena[i]=='u'){
-          resultado+='a'
+          convertida+='a'
          }else{
-          resultado+=cadena[i]
+          convertida+=cadena[i]
          }
 
 
       }
-      return resultado
+      return convertida
       }
       
     },
