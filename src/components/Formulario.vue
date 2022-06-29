@@ -78,8 +78,9 @@
       return resultado
       },
 
-      codificar(cadena){
+      codificar(cadenaAconvertir){
         let convertida=''
+        let cadena=cadenaAconvertir.toLowerCase()
         for(let i=0;i <cadena.length;i++){
           if(cadena[i]=='a'){
             convertida+='u'
