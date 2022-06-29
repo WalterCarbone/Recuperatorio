@@ -2,22 +2,19 @@
 
   <section class="src-components-formulario">
     <h1>Recuperatorio</h1>
-    <label for="texto">Texto a ingresar</label>
-    
- 
-
-    <input type="text" v-model="texto" @input="actualizar()"> <br>
+    <label for="texto">Texto a convertir </label>   
+     <input type="text" v-model="texto" @input="actualizar()"> <br>
     <hr>
-    <p>{{ todoMayuscula }} , todo mayuscula </p>
-    <p>{{ todoMinuscula }} , todo minuscula </p>
-    <p>{{ codificado }} , codificado </p>
-     <p>{{ mayusculaMinuscula }} , Mayuscula-Minuscula</p>
-      <p>{{ minusculaMayuscula }} , Minuscula-Mayuscula</p>
-    <p>cantidad, {{contar}} </p>
+    <p>{{ todoMayuscula }}  (TODO MAYUSCULA) </p>
+    <p>{{ todoMinuscula }} , (TODO MINUSCULA)</p>
+    <p>{{ codificado }} , (CODIFICADO)</p>
+    <p>{{ mayusculaMinuscula }} , (MAYUSCULA-MINUSCULA)</p>
+    <p>{{ minusculaMayuscula }} , (MINUSCULA-MAYUSCULA)</p>
+    <p>cantidad: {{contar}} </p>
 
     <hr>
     <br>
-    <p>Respuestas:</p>
+    <h2>Respuestas:</h2>
     <p>1:c , 2:b, 3:c, 4:a , 5:c</p>  
   </section>
 
@@ -39,7 +36,7 @@
         total:'',
         mayusculaMinuscula:'',
         minusculaMayuscula:'',
-        codifica:''
+        codificado:'',
       }
     },
     methods: {
@@ -48,6 +45,7 @@
         this.todoMinuscula=this.texto.toLowerCase()
         this.mayusculaMinuscula=this.alternarMayMins(this.texto)
         this.minusculaMayuscula=this.alternarMinsMay(this.texto)
+        this.codificado=this.codificar(this.texto)
        
        
       },
@@ -69,7 +67,7 @@
       alternarMinsMay(cadena) {
       let resultado = ''
 
-      for(let i = 0; i < cadena.length; ++i) {
+      for(let i = 0; i < cadena.length; i++) {
         if (i % 2 == 0) {
             resultado += cadena[i].toLowerCase()
         } else {
@@ -80,13 +78,30 @@
       return resultado
       },
 
+      codificar(cadena){
+        let resultado=''
+        for(let i=0;i <cadena.length;i++){
+          if(cadena[i]=='a'){
+            resultado+='u'
+          }
+         else if(cadena[i]=='e'){
+          resultado+='o'
+         }else if(cadena[i]=='o'){
+          resultado+='e'
+         }else if(cadena[i]=='u'){
+          resultado+='a'
+         }else{
+          resultado+=cadena[i]
+         }
 
 
+      }
+      return resultado
+      }
       
     },
     computed: {
-        contar(){
-         
+        contar(){         
          var cant=this.texto.length
          return cant
         }
